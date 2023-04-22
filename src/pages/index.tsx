@@ -1,7 +1,4 @@
-import { useQuery } from 'react-query';
 import Head from 'next/head';
-import { getMovies } from '@/apiRequests/moviesRequest';
-
 import MoviesGrid from '@/components/MoviesGrid';
 import styles from '@/styles/Home.module.css';
 
