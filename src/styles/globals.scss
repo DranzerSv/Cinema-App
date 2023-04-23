@@ -1,12 +1,15 @@
-.card {
-  background-color: antiquewhite;
-  width: 250px;
-}
-.cardsContainer {
-  display: grid;
-  grid-template-columns: auto auto auto;
-  gap: 20px;
-}
-body {
-  background-color: rgb(175, 175, 175);
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+// .card {
+//   background-color: antiquewhite;
+//   width: 250px;
+// }
+// .cardsContainer {
+//   display: grid;
+//   grid-template-columns: auto auto auto;
+//   gap: 20px;
+// }
+// body {
+//   background-color: rgb(175, 175, 175);
+// }
