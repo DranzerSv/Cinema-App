@@ -9,9 +9,9 @@ export default function MoviesGrid() {
   const [currentPage, setCurrentPage] = useState(1);
   const [movieFilters, setMovieFilters] = useState({
     popularityOrder: 'popularity.desc',
-    certification: 'G',
-    genre: '18',
-    year: '2017',
+    certification: '',
+    genre: '',
+    year: '',
   });
   const { data, status, error } = useQuery<IMovies>(
     ['movies', currentPage, movieFilters],
@@ -24,7 +24,7 @@ export default function MoviesGrid() {
         movieFilters.year
       )
   );
-  console.log(movieFilters);
+
   if (error) {
     let message = 'Unknown Error';
     if (error instanceof Error) message = error.message;

@@ -9,8 +9,8 @@ export default function TvShowsGrid() {
   const [currentPage, setCurrentPage] = useState(1);
   const [tvShowsFilters, setTvShowsFilters] = useState({
     popularityOrder: 'popularity.desc',
-    genre: '18',
-    year: '2017',
+    genre: '',
+    year: '',
   });
   const { data, status, error } = useQuery<ITvShows>(
     ['tvShows', currentPage, tvShowsFilters],
@@ -22,7 +22,7 @@ export default function TvShowsGrid() {
         tvShowsFilters.year
       )
   );
-  console.log(tvShowsFilters);
+
   if (error) {
     let message = 'Unknown Error';
     if (error instanceof Error) message = error.message;
