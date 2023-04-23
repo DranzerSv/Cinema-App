@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import MoviesGrid from '@/components/MoviesGrid';
+import TvShowsGrid from '@/components/TvShowsGrid';
 import styles from '@/styles/Home.module.css';
 
 export default function Home() {
@@ -12,7 +13,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main className={styles.main}>
+        <p>-------------------------Movies--------------------------</p>
         <MoviesGrid />
+        <p>-------------------------TV Shows--------------------------</p>
+        <TvShowsGrid />
       </main>
     </>
   );
