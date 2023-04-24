@@ -27,6 +27,7 @@ const getMovie = async (id: number) => {
   const response = await api.get(`${URL}/movie/${id}?`, {
     params: {
       api_key: process.env.NEXT_PUBLIC_API_KEY,
+      append_to_response: 'reviews,similar,credits,images',
     },
   });
   return response.data;
