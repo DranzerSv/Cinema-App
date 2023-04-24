@@ -50,8 +50,8 @@ export default function MoviesGrid() {
 
       <section className="grid grid-cols-4 gap-20">
         {data?.results.map((result, index) => (
-          <Link href={`/movie/${result.id}`}>
-            <div key={index} className="w-56 bg-cyan-300">
+          <Link href={`/movie/${result.id}`} key={index}>
+            <div className="w-56 bg-cyan-300">
               <h3 className="font-bold">{result.title}</h3>
               <p>Date: {result.releaseDate}</p>
               <p>Popularity: {result.popularity}</p>
