@@ -23,4 +23,13 @@ const getMovies = async (
   return response.data;
 };
 
-export { getMovies };
+const getMovie = async (id: number) => {
+  const response = await api.get(`${URL}/movie/${id}?`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_API_KEY,
+    },
+  });
+  return response.data;
+};
+
+export { getMovies, getMovie };
