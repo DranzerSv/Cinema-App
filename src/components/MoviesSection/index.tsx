@@ -6,6 +6,7 @@ import Pagination from '../Pagination';
 import MoviesFilters from './MoviesFilters';
 import Loading from '../Loading/Loading';
 import { stat } from 'fs';
+import Link from 'next/link';
 
 export default function MoviesGrid() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -49,18 +50,20 @@ export default function MoviesGrid() {
 
       <section className="grid grid-cols-4 gap-20">
         {data?.results.map((result, index) => (
-          <div key={index} className="w-56 bg-cyan-300">
-            <h3 className="font-bold">{result.title}</h3>
-            <p>Date: {result.releaseDate}</p>
-            <p>Popularity: {result.popularity}</p>
-            {result.genreIds.map((genre, index) => (
-              <h6 key={index}>
-                {genre === 18 ? 'Drama' : null}
-                {genre === 28 ? 'Action' : null}
-                {genre === 35 ? 'Comedy' : null}
-              </h6>
-            ))}
-          </div>
+          <Link href={`/movie/${result.id}`}>
+            <div key={index} className="w-56 bg-cyan-300">
+              <h3 className="font-bold">{result.title}</h3>
+              <p>Date: {result.releaseDate}</p>
+              <p>Popularity: {result.popularity}</p>
+              {result.genreIds.map((genre, index) => (
+                <h6 key={index}>
+                  {genre === 18 ? 'Drama' : null}
+                  {genre === 28 ? 'Action' : null}
+                  {genre === 35 ? 'Comedy' : null}
+                </h6>
+              ))}
+            </div>
+          </Link>
         ))}
       </section>
     </div>
