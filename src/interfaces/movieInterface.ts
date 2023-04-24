@@ -1,30 +1,33 @@
 export interface IMovie {
   adult: boolean;
-  backdrop_path: string;
-  belongs_to_collection: any;
+  backdropPath: string;
+  belongsToCollection: any;
   budget: number;
   genres: Genre[];
   homepage: string;
   id: number;
-  imdb_id: string;
-  original_language: string;
-  original_title: string;
+  imdbId: string;
+  originalLanguage: string;
+  originalTitle: string;
   overview: string;
   popularity: number;
-  poster_path: string;
-  production_companies: ProductionCompany[];
-  production_countries: ProductionCountry[];
-  release_date: string;
+  posterPath: string;
+  productionCompanies: ProductionCompany[];
+  productionCountries: ProductionCountry[];
+  releaseDate: string;
   revenue: number;
   runtime: number;
-  spoken_languages: SpokenLanguage[];
+  spokenLanguages: SpokenLanguage[];
   status: string;
   tagline: string;
   title: string;
   video: boolean;
-  vote_average: number;
-  vote_count: number;
-  reviews: Reviews;
+  voteAverage: number;
+  voteCount: number;
+  reviews: IReviews;
+  similar: Similar;
+  credits: ICredits;
+  images: Images;
 }
 
 export interface Genre {
@@ -34,41 +37,135 @@ export interface Genre {
 
 export interface ProductionCompany {
   id: number;
-  logo_path: string;
+  logoPath: string;
   name: string;
-  origin_country: string;
+  originCountry: string;
 }
 
 export interface ProductionCountry {
-  iso_3166_1: string;
+  iso31661: string;
   name: string;
 }
 
 export interface SpokenLanguage {
-  english_name: string;
-  iso_639_1: string;
+  englishName: string;
+  iso6391: string;
   name: string;
 }
 
-export interface Reviews {
+export interface IReviews {
   page: number;
   results: Result[];
-  total_pages: number;
-  total_results: number;
+  totalPages: number;
+  totalResults: number;
 }
 
 export interface Result {
   author: string;
-  author_details: AuthorDetails;
+  authorDetails: AuthorDetails;
   content: string;
-  created_at: string;
-  updated_at: string;
+  createdAt: string;
+  id: string;
+  updatedAt: string;
   url: string;
 }
 
 export interface AuthorDetails {
   name: string;
   username: string;
-  avatar_path: string;
+  avatarPath: string;
   rating: number;
+}
+
+export interface Similar {
+  page: number;
+  results: Result2[];
+  totalPages: number;
+  totalResults: number;
+}
+
+export interface Result2 {
+  adult: boolean;
+  backdropPath?: string;
+  genreIds: number[];
+  id: number;
+  originalLanguage: string;
+  originalTitle: string;
+  overview: string;
+  popularity: number;
+  posterPath?: string;
+  releaseDate: string;
+  title: string;
+  video: boolean;
+  voteAverage: number;
+  voteCount: number;
+}
+
+export interface ICredits {
+  cast: ICast[];
+  crew: ICrew[];
+}
+
+export interface ICast {
+  adult: boolean;
+  gender: number;
+  id: number;
+  knownForDepartment: string;
+  name: string;
+  originalName: string;
+  popularity: number;
+  profilePath?: string;
+  castId: number;
+  character: string;
+  creditId: string;
+  order: number;
+}
+
+export interface ICrew {
+  adult: boolean;
+  gender: number;
+  id: number;
+  knownForDepartment: string;
+  name: string;
+  originalName: string;
+  popularity: number;
+  profilePath?: string;
+  creditId: string;
+  department: string;
+  job: string;
+}
+
+export interface Images {
+  backdrops: IBackdrop[];
+  logos: Logo[];
+  posters: Poster[];
+}
+
+export interface IBackdrop {
+  aspectRatio: number;
+  height: number;
+  iso6391?: string;
+  filePath: string;
+  voteAverage: number;
+  voteCount: number;
+  width: number;
+}
+
+export interface Logo {
+  aspectRatio: number;
+  height: number;
+  iso6391: string;
+  filePath: string;
+  voteAverage: number;
+  voteCount: number;
+  width: number;
+}
+export interface Poster {
+  aspectRatio: number;
+  height: number;
+  iso6391?: string;
+  filePath: string;
+  voteAverage: number;
+  voteCount: number;
+  width: number;
 }
