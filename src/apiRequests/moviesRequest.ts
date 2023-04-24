@@ -1,6 +1,6 @@
 import api from './api';
 
-const URL = process.env.NEXT_PUBLIC_URL;
+const URL = 'https://api.themoviedb.org/3';
 
 const getMovies = async (
   currentPage: number,
