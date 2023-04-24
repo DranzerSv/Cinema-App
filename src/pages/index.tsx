@@ -1,6 +1,6 @@
 import Head from 'next/head';
-import MoviesGrid from '@/components/MoviesGrid';
-import TvShowsGrid from '@/components/TvShowsGrid';
+import MoviesGrid from '@/components/MoviesSection';
+import TvShowsGrid from '@/components/TvShowsSection';
 import styles from '@/styles/Home.module.css';
 
 export default function Home() {
