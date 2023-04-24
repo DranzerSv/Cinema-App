@@ -5,6 +5,7 @@ import { ITvShows } from '@/interfaces/tvShowsInterface';
 import Pagination from '../Pagination';
 import TvShowsFilters from './TvShowsFilters';
 import Loading from '../Loading/Loading';
+import Link from 'next/link';
 
 export default function TvShowsGrid() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -45,18 +46,20 @@ export default function TvShowsGrid() {
       {status == 'loading' && <Loading />}
       <section className="grid grid-cols-4 gap-20">
         {data?.results.map((result, index) => (
-          <div key={index} className="w-56 bg-pink-300">
-            <h3 className="font-bold">{result.name}</h3>
-            <p>Date: {result.firstAirDate}</p>
-            <p>Popularity: {result.popularity}</p>
-            {result.genreIds.map((genre, index) => (
-              <h6 key={index}>
-                {genre === 18 ? 'Drama' : null}
-                {genre === 10759 ? 'Action & Adventure' : null}
-                {genre === 35 ? 'Comedy' : null}
-              </h6>
-            ))}
-          </div>
+          <Link href={`/tvshow/${result.id}`}>
+            <div key={index} className="w-56 bg-pink-300">
+              <h3 className="font-bold">{result.name}</h3>
+              <p>Date: {result.firstAirDate}</p>
+              <p>Popularity: {result.popularity}</p>
+              {result.genreIds.map((genre, index) => (
+                <h6 key={index}>
+                  {genre === 18 ? 'Drama' : null}
+                  {genre === 10759 ? 'Action & Adventure' : null}
+                  {genre === 35 ? 'Comedy' : null}
+                </h6>
+              ))}
+            </div>
+          </Link>
         ))}
       </section>
     </div>
