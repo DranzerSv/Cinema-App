@@ -1,30 +1,34 @@
-import Slider from 'react-slick';
 import { Images, IBackdrop } from '@/interfaces/movieInterface';
+import dynamic from 'next/dynamic';
+import 'react-alice-carousel/lib/alice-carousel.css';
+//next/Image
 
 interface ImagesCaruselProps {
   images: Images;
 }
 export default function ImagesCarusel({ images }: ImagesCaruselProps) {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
+  const responsive = {
+    0: { items: 1 },
+    768: { items: 1 },
+    1024: { items: 2 },
   };
+  const AliceCarousel = dynamic(() => import('react-alice-carousel'), {
+    ssr: false,
+  });
   return (
-    <div className=" w-10/12 2xl:w-6/12 mx-auto">
-      <Slider {...settings}>
-        {images.backdrops
-          .slice(0, 6)
+    <div className=" w-64 md:w-4/5 mx-auto ">
+      <AliceCarousel
+        mouseTracking
+        responsive={responsive}
+        items={images.backdrops
+          .slice(0, 10)
           .map((backdrop: IBackdrop, index: number) => (
-            <div key={index}>
-              <img
-                src={`https://image.tmdb.org/t/p/w780${backdrop.filePath}`}
-              />
-            </div>
+            <img
+              key={index}
+              src={`https://image.tmdb.org/t/p/w780${backdrop.filePath}`}
+            />
           ))}
-      </Slider>
+      />
     </div>
   );
 }
