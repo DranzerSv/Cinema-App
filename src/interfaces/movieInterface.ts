@@ -115,7 +115,7 @@ export interface ICast {
   originalName: string;
   popularity: number;
   profilePath?: string;
-  castId: number;
+
   character: string;
   creditId: string;
   order: number;
