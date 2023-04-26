@@ -19,5 +19,14 @@ const getTvShows = async (
   });
   return response.data;
 };
+const getTvShow = async (id: number) => {
+  const response = await api.get(`${URL}/tv/${id}?`, {
+    params: {
+      api_key: process.env.NEXT_PUBLIC_API_KEY,
+      append_to_response: 'reviews,similar,credits,images',
+    },
+  });
+  return response.data;
+};
 
-export { getTvShows };
+export { getTvShows, getTvShow };
