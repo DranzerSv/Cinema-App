@@ -6,6 +6,7 @@ import Pagination from '../Pagination';
 import TvShowsFilters from './TvShowsFilters';
 import Loading from '../Loading/Loading';
 import Link from 'next/link';
+import Genres from '../Genres';
 
 export default function TvShowsGrid() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -33,7 +34,7 @@ export default function TvShowsGrid() {
   }
 
   return (
-    <div className="bg-gray-200 w-11/12">
+    <div className="bg-smoke w-full mx-auto mt-20">
       <TvShowsFilters
         setTvShowsFilters={setTvShowsFilters}
         currentTvShowsFilters={tvShowsFilters}
@@ -44,20 +45,28 @@ export default function TvShowsGrid() {
         setCurrentPage={setCurrentPage}
       />
       {status == 'loading' && <Loading />}
-      <section className="grid grid-cols-4 gap-20">
+      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {data?.results.map((result, index) => (
-          <Link href={`/tvshow/${result.id}`} key={index}>
-            <div className="w-56 bg-pink-300">
-              <h3 className="font-bold">{result.name}</h3>
-              <p>Date: {result.firstAirDate}</p>
-              <p>Popularity: {result.popularity}</p>
-              {result.genreIds.map((genre, index) => (
-                <h6 key={index}>
-                  {genre === 18 ? 'Drama' : null}
-                  {genre === 10759 ? 'Action & Adventure' : null}
-                  {genre === 35 ? 'Comedy' : null}
-                </h6>
-              ))}
+          <Link href={`/tvshow/${result.id}`} key={index} className="mb-14">
+            <div className=" flex flex-col gap-2 w-72 md:w-64 mx-auto">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${result.posterPath}`}
+              />
+              <div className=" h-16">
+                <h3 className="font-oswald text-crimson font-semibold text-600 text-xl">
+                  {result.name}
+                </h3>
+              </div>
+              <p className="font-lato">
+                <span className="font-semibold">Date: </span>
+                {result.firstAirDate}
+              </p>
+              <p className="font-lato">
+                <span className="font-semibold">Popularity: </span>
+                {result.popularity.toFixed(0)}
+              </p>
+
+              <Genres genres={result.genreIds} />
             </div>
           </Link>
         ))}
