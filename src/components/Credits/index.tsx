@@ -55,16 +55,6 @@ export default function Credits({ credits }: ICreditsProps) {
             ))}
         />
       </div>
-
-      {/* <div className="bg-red-200">
-        <h3 className="font-bold text-3xl font-oswald text-crimson">Crew</h3>
-        {credits.crew.slice(0, 5).map((person: ICrew, index: number) => (
-          <div key={index}>
-            <img src={`https://image.tmdb.org/t/p/w185${person.profilePath}`} />
-            <p>{person.name}</p>
-          </div>
-        ))}
-      </div> */}
     </div>
   );
 }
