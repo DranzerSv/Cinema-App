@@ -1,7 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
 
-import paginationStyles from './pagination.module.scss';
-
 interface IPaginationProps {
   totalPages: number;
   currentPage: number;
@@ -17,10 +15,13 @@ function Pagination({
     setCurrentPage(page > 500 ? 500 : page);
   }
 
+  const show = 'text-steel font-oswald';
+
   return (
-    <div className={paginationStyles.pagination}>
+    <div className=" flex flex-row gap-3 justify-center items-center h-16">
       <button
-        className={currentPage > 1 ? '' : paginationStyles.none}
+        disabled={currentPage === 1}
+        className={' text-fire font-oswald '}
         onClick={() => {
           changePage(currentPage - 1);
         }}
@@ -28,25 +29,18 @@ function Pagination({
         Previous
       </button>
       <button
-        className={currentPage > 4 ? '' : paginationStyles.none}
+        className={currentPage > 4 ? show : 'hidden'}
         onClick={() => {
           changePage(1);
         }}
       >
         1
       </button>
-      <button
-        className={currentPage > 4 ? '' : paginationStyles.none}
-        onClick={() => {
-          changePage(2);
-        }}
-      >
-        2
-      </button>
+
       {currentPage > 4 ? '. . .' : null}
 
       <button
-        className={currentPage > 1 ? '' : paginationStyles.none}
+        className={currentPage > 1 ? show : 'hidden'}
         onClick={() => {
           changePage(currentPage - 1);
         }}
@@ -54,13 +48,13 @@ function Pagination({
         {currentPage - 1}
       </button>
 
-      <button className={paginationStyles.current}>{currentPage}</button>
+      <button className={'border-fire border-2  h-7 w-7 ' + show}>
+        {currentPage}
+      </button>
 
       <button
         className={
-          currentPage + 1 <= totalPages && currentPage < 500
-            ? ''
-            : paginationStyles.none
+          currentPage + 1 <= totalPages && currentPage < 500 ? show : 'hidden'
         }
         onClick={() => {
           changePage(currentPage + 1);
@@ -68,28 +62,20 @@ function Pagination({
       >
         {currentPage + 1}
       </button>
+
       <button
-        className={
-          currentPage + 2 <= totalPages && currentPage < 499
-            ? ''
-            : paginationStyles.none
-        }
-        onClick={() => {
-          changePage(currentPage + 2);
-        }}
-      >
-        {currentPage + 2}
-      </button>
-      <button
-        className={currentPage < 498 ? '' : paginationStyles.none}
+        className={currentPage < 498 ? 'font-oswald ' : 'hidden'}
         onClick={() => {
           changePage(totalPages < 500 ? totalPages : 500);
         }}
       >
-        {totalPages < 500 ? `... ${totalPages}` : `. . .500`}
+        {totalPages !== currentPage
+          ? `... ${totalPages < 500 ? totalPages : 500}`
+          : ''}
       </button>
       <button
-        className={currentPage < 500 ? '' : paginationStyles.none}
+        disabled={!(currentPage < 500 && currentPage < totalPages)}
+        className={'text-fire font-oswald'}
         onClick={() => {
           changePage(currentPage + 1);
         }}
