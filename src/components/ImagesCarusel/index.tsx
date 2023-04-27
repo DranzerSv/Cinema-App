@@ -1,6 +1,8 @@
 import { Images, IBackdrop } from '@/interfaces/movieInterface';
 import dynamic from 'next/dynamic';
 import 'react-alice-carousel/lib/alice-carousel.css';
+
+import Image from 'next/image';
 //next/Image
 
 interface ImagesCaruselProps {
@@ -23,9 +25,11 @@ export default function ImagesCarusel({ images }: ImagesCaruselProps) {
         items={images.backdrops
           .slice(0, 10)
           .map((backdrop: IBackdrop, index: number) => (
-            <img
-              key={index}
+            <Image
               src={`https://image.tmdb.org/t/p/w780${backdrop.filePath}`}
+              alt="Description"
+              width={600}
+              height={400}
             />
           ))}
       />
