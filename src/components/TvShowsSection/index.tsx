@@ -6,6 +6,8 @@ import Pagination from '../Pagination';
 import TvShowsFilters from './TvShowsFilters';
 import Loading from '../Loading/Loading';
 import Link from 'next/link';
+import Image from 'next/image';
+import cardDefault from '@/assets/cardDefault.png';
 import Genres from '../Genres';
 
 export default function TvShowsGrid() {
@@ -36,6 +38,7 @@ export default function TvShowsGrid() {
   return (
     <div className="bg-smoke w-full mx-auto mt-20">
       <TvShowsFilters
+        setPage={setCurrentPage}
         setTvShowsFilters={setTvShowsFilters}
         currentTvShowsFilters={tvShowsFilters}
       />
@@ -49,8 +52,15 @@ export default function TvShowsGrid() {
         {data?.results.map((result, index) => (
           <Link href={`/tvshow/${result.id}`} key={index} className="mb-14">
             <div className=" flex flex-col gap-2 w-72 md:w-64 mx-auto">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${result.posterPath}`}
+              <Image
+                src={
+                  result.posterPath
+                    ? `https://image.tmdb.org/t/p/w500${result.posterPath}`
+                    : cardDefault
+                }
+                width={500}
+                height={700}
+                alt={result.name + ' photo'}
               />
               <div className=" h-16">
                 <h3 className="font-oswald text-crimson font-semibold text-600 text-xl">
