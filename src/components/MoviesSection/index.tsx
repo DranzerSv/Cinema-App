@@ -7,7 +7,9 @@ import MoviesFilters from './MoviesFilters';
 import Loading from '../Loading/Loading';
 import { stat } from 'fs';
 import Link from 'next/link';
+import Image from 'next/image';
 import Genres from '../Genres';
+import cardDefault from '@/assets/cardDefault.png';
 
 export default function MoviesGrid() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -39,6 +41,7 @@ export default function MoviesGrid() {
   return (
     <div className="bg-smoke w-full mx-auto">
       <MoviesFilters
+        setPage={setCurrentPage}
         setMoviesFilters={setMovieFilters}
         currentMoviesFilters={movieFilters}
       />
@@ -53,8 +56,15 @@ export default function MoviesGrid() {
         {data?.results.map((result, index) => (
           <Link href={`/movie/${result.id}`} key={index} className="mb-14">
             <div className=" flex flex-col gap-2 w-72 md:w-64 mx-auto">
-              <img
-                src={`https://image.tmdb.org/t/p/w500${result.posterPath}`}
+              <Image
+                src={
+                  result.posterPath
+                    ? `https://image.tmdb.org/t/p/w500${result.posterPath}`
+                    : cardDefault
+                }
+                width={500}
+                height={700}
+                alt={result.title + ' photo'}
               />
               <div className=" h-16">
                 <h3 className="font-oswald text-crimson font-semibold text-600 text-xl">
