@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from 'react';
 export default interface ITvShowsFilters {
+  setPage: Dispatch<SetStateAction<number>>;
   setTvShowsFilters: Dispatch<
     SetStateAction<{
       popularityOrder: string;
