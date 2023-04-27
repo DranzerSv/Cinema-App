@@ -1,5 +1,7 @@
 import dynamic from 'next/dynamic';
 import 'react-alice-carousel/lib/alice-carousel.css';
+import Image from 'next/image';
+import profileDefault from '@/assets/profileDefault.png';
 import { ICredits, ICast, ICrew } from '@/interfaces/movieInterface';
 interface ICreditsProps {
   credits: ICredits;
@@ -15,6 +17,7 @@ export default function Credits({ credits }: ICreditsProps) {
   const AliceCarousel = dynamic(() => import('react-alice-carousel'), {
     ssr: false,
   });
+
   return (
     <div className="">
       <div className=" mx-auto w-5/6 flex flex-col items-center gap-3  ">
@@ -26,9 +29,16 @@ export default function Credits({ credits }: ICreditsProps) {
           items={credits.cast
             .slice(0, 8)
             .map((person: ICast, index: number) => (
-              <div key={index} className="mx-2">
-                <img
-                  src={`https://image.tmdb.org/t/p/w185${person.profilePath}`}
+              <div key={index} className="mx-2 ">
+                <Image
+                  src={
+                    person.profilePath
+                      ? `https://image.tmdb.org/t/p/w185${person.profilePath}`
+                      : profileDefault
+                  }
+                  alt={person.name + ' photo'}
+                  width={200}
+                  height={100}
                 />
                 <h3 className="font-oswald text-fire text-lg">{person.name}</h3>
                 <p className="font-lato text-sm">{person.knownForDepartment}</p>
@@ -45,9 +55,19 @@ export default function Credits({ credits }: ICreditsProps) {
           items={credits.crew
             .slice(0, 8)
             .map((person: ICrew, index: number) => (
-              <div key={index} className="mx-2">
-                <img
+              <div key={index} className="mx-2  py-2">
+                {/* <img
                   src={`https://image.tmdb.org/t/p/w185${person.profilePath}`}
+                /> */}
+                <Image
+                  src={
+                    person.profilePath
+                      ? `https://image.tmdb.org/t/p/w185${person.profilePath}`
+                      : profileDefault
+                  }
+                  alt={person.name + ' photo'}
+                  width={200}
+                  height={100}
                 />
                 <h3 className="font-oswald text-fire text-lg">{person.name}</h3>
                 <p className="font-lato text-sm">{person.knownForDepartment}</p>
