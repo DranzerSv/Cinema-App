@@ -3,7 +3,6 @@ import dynamic from 'next/dynamic';
 import 'react-alice-carousel/lib/alice-carousel.css';
 
 import Image from 'next/image';
-//next/Image
 
 interface ImagesCaruselProps {
   images: Images;
