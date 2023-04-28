@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import cardDefault from '@/assets/cardDefault.png';
 import Genres from '../Genres';
+import NoResults from '../NoResults';
 
 export default function TvShowsGrid() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -48,6 +49,7 @@ export default function TvShowsGrid() {
         setCurrentPage={setCurrentPage}
       />
       {status == 'loading' && <Loading />}
+      {data?.results.length === 0 && <NoResults />}
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {data?.results.map((result, index) => (
           <Link href={`/tvshow/${result.id}`} key={index} className="mb-14">
