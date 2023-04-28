@@ -4,7 +4,7 @@ import { getMovies } from '@/apiRequests/moviesRequest';
 import { IMovies } from '@/interfaces/moviesInterface';
 import Pagination from '../Pagination';
 import MoviesFilters from './MoviesFilters';
-import Loading from '../Loading/Loading';
+import Loading from '../Loading';
 import { stat } from 'fs';
 import Link from 'next/link';
 import Image from 'next/image';

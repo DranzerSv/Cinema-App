@@ -4,7 +4,7 @@ import { getTvShows } from '@/apiRequests/tvShowsRequest';
 import { ITvShows } from '@/interfaces/tvShowsInterface';
 import Pagination from '../Pagination';
 import TvShowsFilters from './TvShowsFilters';
-import Loading from '../Loading/Loading';
+import Loading from '../Loading';
 import Link from 'next/link';
 import Image from 'next/image';
 import cardDefault from '@/assets/cardDefault.png';
