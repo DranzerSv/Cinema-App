@@ -5,8 +5,10 @@ import UsersReviews from '@/components/UsersReviews';
 import { ITvShow } from '@/interfaces/tvShowInterface';
 import defaultProfile from '@/defaultImages/profileDefault.jpg';
 import Link from 'next/link';
+import HeartButton from '@/components/HeartButton';
 
 export default function TvShowDetail({
+  id,
   name,
   overview,
   voteAverage,
@@ -43,6 +45,7 @@ export default function TvShowDetail({
               <p className="  font-lato md:w-96 ">
                 <span className="font-semibold">Overview:</span> {overview}
               </p>
+              <HeartButton id={id} type="tv" />
             </div>
           </section>
         </div>
@@ -64,6 +67,7 @@ export async function getServerSideProps({ query: { id } }: IServerProps) {
 
   return {
     props: {
+      id: tvShow.id,
       name: tvShow.name,
       overview: tvShow.overview,
       posterPath: tvShow.posterPath,

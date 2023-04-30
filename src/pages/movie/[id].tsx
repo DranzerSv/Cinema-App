@@ -1,11 +1,11 @@
 import { getMovie } from '@/apiRequests/moviesRequest';
 import Credits from '@/components/Credits';
-import Genres from '@/components/Genres';
 import ImagesCarusel from '@/components/ImagesCarusel';
 import UsersReviews from '@/components/UsersReviews';
 import { IMovie } from '@/interfaces/movieInterface';
-import Link from 'next/link';
+import HeartButton from '@/components/HeartButton';
 export default function MovieDetail({
+  id,
   title,
   overview,
   voteAverage,
@@ -19,7 +19,6 @@ export default function MovieDetail({
   posterPath,
   similar,
 }: IMovie) {
-  console.log(revenue);
   return (
     <div className=" w-full">
       <div
@@ -62,6 +61,8 @@ export default function MovieDetail({
             <p className="  font-lato md:w-96 ">
               <span className="font-semibold">Overview:</span> {overview}
             </p>
+
+            <HeartButton id={id} type="movie" />
           </div>
         </section>
       </div>
@@ -85,6 +86,7 @@ export async function getServerSideProps({ query: { id } }: IServerProps) {
 
   return {
     props: {
+      id: movie.id,
       title: movie.title,
       budget: movie.budget,
       revenue: movie.revenue,
