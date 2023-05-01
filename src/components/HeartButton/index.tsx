@@ -1,7 +1,8 @@
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { getAccountInfo } from '@/apiRequests/loginRequests';
 import { IAccountInfo } from '@/interfaces/loginInterfaces';
-import { setFavorite, getFavorites } from '@/apiRequests/loginRequests';
+import { setFavorite } from '@/apiRequests/loginRequests';
+import { toast } from 'react-hot-toast';
 import Session from '@/components/Context';
 import Link from 'next/link';
 
@@ -14,19 +15,27 @@ function HeartButton({ id, type }: IHeartProps) {
   const { sessionValue } = useContext(Session);
 
   async function handleClick() {
-    const accountInfo: IAccountInfo = await getAccountInfo(sessionValue);
-    setFavorite(id, true, accountInfo.id, sessionValue, type);
+    try {
+      const accountInfo: IAccountInfo = await getAccountInfo(sessionValue);
+      await setFavorite(id, true, accountInfo.id, sessionValue, type);
+      toast.success('Added to favorites');
+    } catch (error) {
+      toast.error('Error adding to favorites');
+    }
   }
   return (
     <div>
       {sessionValue ? (
-        <button className="bg-pink-500 w-16 text-smoke" onClick={handleClick}>
-          Like
+        <button
+          className="bg-crimson w-24 text-smoke hover:bg-fire"
+          onClick={handleClick}
+        >
+          Add to favorites
         </button>
       ) : (
         <Link href="/login">
-          <p className="bg-crimson text-white p-2 w-32">
-            Log in to mark as favorite
+          <p className="bg-steel text-white p-2 w-32 hover:bg-gray-400 ">
+            Log in to add to favorites
           </p>
         </Link>
       )}
