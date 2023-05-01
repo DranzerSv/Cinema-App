@@ -1,6 +1,5 @@
 import api from './api';
-import Session from '@/components/Context';
-import { useContext } from 'react';
+
 import { IAccountInfo } from '@/interfaces/loginInterfaces';
 const URL = 'https://api.themoviedb.org/3';
 
@@ -68,11 +67,9 @@ const getFavorites = async (
   page: number,
   type: string
 ) => {
-  const { sessionValue } = useContext(Session);
-
-  const accountInfo: IAccountInfo = await getAccountInfo(sessionValue);
+  const accountInfo: IAccountInfo = await getAccountInfo(sessionId);
   const response = await api.get(
-    `${URL}/account/${accountInfo.id}/${type}?`,
+    `${URL}/account/${accountInfo.id}/favorite/${type}?`,
 
     {
       params: {
