@@ -1,6 +1,7 @@
 import Head from 'next/head';
-import MoviesGrid from '@/components/MoviesSection';
-import TvShowsGrid from '@/components/TvShowsSection';
+import MoviesSection from '@/components/MoviesSection';
+
+import TvShowsSection from '@/components/TvShowsSection';
 
 export default function Home() {
   return (
@@ -10,9 +11,9 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main>
-        <MoviesGrid />
+        <MoviesSection />
 
-        <TvShowsGrid />
+        <TvShowsSection />
       </main>
     </>
   );
