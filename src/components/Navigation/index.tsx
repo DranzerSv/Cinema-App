@@ -33,14 +33,14 @@ function Navigation() {
         </li>
         <li>
           <Link
-            href="/login"
+            href="/favorites"
             className={
-              router.pathname === '/login'
+              router.pathname === '/favorites'
                 ? 'border-crimson border-b-2 pb-1 text-smoke'
                 : 'text-smoke'
             }
           >
-            Login
+            Favorites
           </Link>
         </li>
       </ul>
