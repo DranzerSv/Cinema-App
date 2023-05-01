@@ -4,6 +4,8 @@ import ImagesCarusel from '@/components/ImagesCarusel';
 import UsersReviews from '@/components/UsersReviews';
 import { IMovie } from '@/interfaces/movieInterface';
 import HeartButton from '@/components/HeartButton';
+import { Toaster } from 'react-hot-toast';
+
 export default function MovieDetail({
   id,
   title,
@@ -70,6 +72,7 @@ export default function MovieDetail({
       <div className="">
         <ImagesCarusel images={images} />
       </div>
+      <Toaster />
 
       <Credits credits={credits} />
       <UsersReviews reviews={reviews} />

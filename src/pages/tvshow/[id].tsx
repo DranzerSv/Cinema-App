@@ -6,6 +6,7 @@ import { ITvShow } from '@/interfaces/tvShowInterface';
 import defaultProfile from '@/defaultImages/profileDefault.jpg';
 import Link from 'next/link';
 import HeartButton from '@/components/HeartButton';
+import { Toaster } from 'react-hot-toast';
 
 export default function TvShowDetail({
   id,
@@ -52,6 +53,7 @@ export default function TvShowDetail({
         <div className="border-2 border-steel">
           <ImagesCarusel images={images} />
         </div>
+        <Toaster />
 
         <Credits credits={credits} />
         <UsersReviews reviews={reviews} />
