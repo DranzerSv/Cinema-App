@@ -15,17 +15,11 @@ import NoResults from '@/components/NoResults';
 function SearchPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [search, setSearch] = useState('avengers');
-  const { data, status, error } = useQuery<ISearchInterface>(
+  const { data, status } = useQuery<ISearchInterface>(
     ['productions', currentPage, search],
     () => getProductions(currentPage, search)
   );
 
-  if (error) {
-    let message = 'Unknown Error';
-    if (error instanceof Error) message = error.message;
-    console.log(status);
-    console.log(message);
-  }
   const handleSearch = debounce((e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
     setCurrentPage(1);
