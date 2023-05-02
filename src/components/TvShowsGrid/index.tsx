@@ -13,7 +13,7 @@ function TvShowsGrid({ data }: ITvShowsGridProps) {
     <div>
       <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 ">
         {data?.results.map((result, index) => (
-          <Link href={`/movie/${result.id}`} key={index} className="mb-14">
+          <Link href={`/tvshow/${result.id}`} key={index} className="mb-14">
             <div className=" flex flex-col gap-2 w-72 md:w-64 mx-auto">
               <Image
                 src={
