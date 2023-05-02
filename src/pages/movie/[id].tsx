@@ -5,6 +5,8 @@ import UsersReviews from '@/components/UsersReviews';
 import { IMovie } from '@/interfaces/movieInterface';
 import HeartButton from '@/components/HeartButton';
 import { Toaster } from 'react-hot-toast';
+import Image from 'next/image';
+import cardDefault from '@/assets/cardDefault.png';
 
 export default function MovieDetail({
   id,
@@ -21,19 +23,27 @@ export default function MovieDetail({
   posterPath,
   similar,
 }: IMovie) {
+  const image =
+    images.backdrops[0]?.filePath || '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg';
   return (
     <div className=" w-full">
       <div
         className="w-full h-fit bg-no-repeat bg-cover mb-20 "
         style={{
-          backgroundImage: `url('https://image.tmdb.org/t/p/original${images.backdrops[1].filePath}')`,
+          backgroundImage: `url('https://image.tmdb.org/t/p/original${image}')`,
         }}
       >
         <section className="md:w-9/12 md:mx-auto lg:flex  lg:w-full 2xl:w-6/12">
           <div className="">
-            <img
-              className=""
-              src={`https://image.tmdb.org/t/p/original${posterPath}`}
+            <Image
+              src={
+                posterPath
+                  ? `https://image.tmdb.org/t/p/w500${posterPath}`
+                  : cardDefault
+              }
+              width={500}
+              height={700}
+              alt={title + ' photo'}
             />
           </div>
 
@@ -59,7 +69,7 @@ export default function MovieDetail({
             <p className="font-lato">
               <span className="font-semibold">Release Date:</span> {releaseDate}
             </p>
-            <p>Genres</p>
+
             <p className="  font-lato md:w-96 ">
               <span className="font-semibold">Overview:</span> {overview}
             </p>
