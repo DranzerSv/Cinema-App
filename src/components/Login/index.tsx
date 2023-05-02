@@ -8,7 +8,7 @@ function Login() {
       const data = await getRequestToken();
       console.log(data.requestToken);
       router.push(
-        `https://www.themoviedb.org/authenticate/${data.requestToken}?redirect_to=http://localhost:3000/approved`
+        `https://www.themoviedb.org/authenticate/${data.requestToken}?redirect_to=https://cinema-blond-mu.vercel.app/approved`
       );
     } catch (error) {}
   };
