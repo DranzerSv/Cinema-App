@@ -154,6 +154,7 @@ export interface ICrew {
 }
 export interface Images {
   backdrops: IBackdrop[];
+  logos: [];
   posters: Poster[];
 }
 
