@@ -10,13 +10,8 @@ export interface IAccountInfo {
 
 export interface Avatar {
   gravatar: Gravatar;
-  tmdb: Tmdb;
 }
 
 export interface Gravatar {
   hash: string;
-}
-
-export interface Tmdb {
-  avatar_path: any;
 }
