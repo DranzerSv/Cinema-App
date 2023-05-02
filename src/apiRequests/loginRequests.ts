@@ -3,7 +3,7 @@ import api from './api';
 import { IAccountInfo } from '@/interfaces/loginInterfaces';
 const URL = 'https://api.themoviedb.org/3';
 
-const getRequestToken = async () => {
+export const getRequestToken = async () => {
   const response = await api.get(`${URL}/authentication/token/new?`, {
     params: {
       api_key: process.env.NEXT_PUBLIC_API_KEY,
@@ -11,7 +11,9 @@ const getRequestToken = async () => {
   });
   return response.data;
 };
-const getSession = async (requestToken: string | string[] | undefined) => {
+export const getSession = async (
+  requestToken: string | string[] | undefined
+) => {
   const response = await api.post(
     `${URL}/authentication/session/new?api_key=eb70c405e3f745fc0ab5d82c26964165`,
 
@@ -25,7 +27,7 @@ const getSession = async (requestToken: string | string[] | undefined) => {
   return response.data;
 };
 
-const getAccountInfo = async (sessionId: string | null) => {
+export const getAccountInfo = async (sessionId: string | null) => {
   const response = await api.get(
     `${URL}/account?`,
 
@@ -39,7 +41,7 @@ const getAccountInfo = async (sessionId: string | null) => {
 
   return response.data;
 };
-const setFavorite = async (
+export const setFavorite = async (
   resourceId: number,
   like: boolean,
   accountId: number,
@@ -62,7 +64,7 @@ const setFavorite = async (
   return response.data;
 };
 
-const getFavorites = async (
+export const getFavorites = async (
   sessionId: string | null,
   page: number,
   type: string
@@ -81,12 +83,4 @@ const getFavorites = async (
   );
 
   return response.data;
-};
-
-export {
-  getRequestToken,
-  getSession,
-  getAccountInfo,
-  setFavorite,
-  getFavorites,
 };
