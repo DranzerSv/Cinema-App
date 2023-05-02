@@ -7,7 +7,7 @@ function Approved() {
   const router = useRouter();
 
   const { request_token } = router.query;
-  const { sessionValue, setSessionValue } = useContext(Session);
+  const { setSessionValue } = useContext(Session);
 
   useEffect(() => {
     if (!router.isReady) return;
