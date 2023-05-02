@@ -24,7 +24,7 @@ function SearchPage() {
     setSearch(e.target.value);
     setCurrentPage(1);
   }, 500);
-  console.log(data);
+
   return (
     <div>
       <SearchBar handleSearch={handleSearch} />
