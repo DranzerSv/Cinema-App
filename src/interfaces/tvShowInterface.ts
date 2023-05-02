@@ -42,7 +42,7 @@ export interface CreatedBy {
   creditId: string;
   name: string;
   gender: number;
-  profilePath: string | null;
+  profilePath: any;
 }
 
 export interface Genre {
@@ -62,6 +62,7 @@ export interface LastEpisodeToAir {
   runtime: number;
   seasonNumber: number;
   showId: number;
+  stillPath: any;
 }
 
 export interface NextEpisodeToAir {
@@ -76,6 +77,7 @@ export interface NextEpisodeToAir {
   runtime: number;
   seasonNumber: number;
   showId: number;
+  stillPath: any;
 }
 
 export interface Network {
@@ -115,7 +117,7 @@ export interface SpokenLanguage {
 
 export interface Reviews {
   page: number;
-  results: [];
+  results: any[];
   totalPages: number;
   totalResults: number;
 }
@@ -147,14 +149,14 @@ export interface ICrew {
   name: string;
   originalName: string;
   popularity: number;
-  profilePath: string | null;
+  profilePath: any;
   creditId: string;
   department: string;
   job: string;
 }
 export interface Images {
   backdrops: IBackdrop[];
-  logos: [];
+  logos: any[];
   posters: Poster[];
 }
 
