@@ -3,9 +3,9 @@ import Credits from '@/components/Credits';
 import ImagesCarusel from '@/components/ImagesCarusel';
 import UsersReviews from '@/components/UsersReviews';
 import { ITvShow } from '@/interfaces/tvShowInterface';
-import defaultProfile from '@/defaultImages/profileDefault.jpg';
-import Link from 'next/link';
 import HeartButton from '@/components/HeartButton';
+import Image from 'next/image';
+import cardDefault from '@/assets/cardDefault.png';
 import { Toaster } from 'react-hot-toast';
 
 export default function TvShowDetail({
@@ -20,20 +20,28 @@ export default function TvShowDetail({
   posterPath,
   similar,
 }: ITvShow) {
+  const image =
+    images.backdrops[0]?.filePath || '/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg';
   return (
     <div>
       <div className="">
         <div
           className="w-full h-fit bg-no-repeat bg-cover mb-20 "
           style={{
-            backgroundImage: `url('https://image.tmdb.org/t/p/original${images.backdrops[1].filePath}')`,
+            backgroundImage: `url('https://image.tmdb.org/t/p/original${image}')`,
           }}
         >
           <section className="md:w-9/12 md:mx-auto lg:flex  lg:w-full 2xl:w-6/12">
             <div className="">
-              <img
-                className=""
-                src={`https://image.tmdb.org/t/p/original${posterPath}`}
+              <Image
+                src={
+                  posterPath
+                    ? `https://image.tmdb.org/t/p/w500${posterPath}`
+                    : cardDefault
+                }
+                width={500}
+                height={700}
+                alt={name + ' photo'}
               />
             </div>
 
@@ -42,7 +50,7 @@ export default function TvShowDetail({
               <p className="font-lato">
                 <span className="font-semibold">Rate:</span> {voteAverage}
               </p>
-              <p>Genres</p>
+
               <p className="  font-lato md:w-96 ">
                 <span className="font-semibold">Overview:</span> {overview}
               </p>
@@ -50,7 +58,7 @@ export default function TvShowDetail({
             </div>
           </section>
         </div>
-        <div className="border-2 border-steel">
+        <div className="">
           <ImagesCarusel images={images} />
         </div>
         <Toaster />
