@@ -5,10 +5,6 @@ import { ITvShows } from '@/interfaces/tvShowsInterface';
 import Pagination from '../Pagination';
 import TvShowsFilters from './TvShowsFilters';
 import Loading from '../Loading';
-import Link from 'next/link';
-import Image from 'next/image';
-import cardDefault from '@/assets/cardDefault.png';
-import Genres from '../Genres';
 import NoResults from '../NoResults';
 import TvShowsGrid from '../TvShowsGrid';
 
@@ -19,7 +15,7 @@ export default function TvShowsSection() {
     genre: '',
     year: '',
   });
-  const { data, status, error } = useQuery<ITvShows>(
+  const { data, status } = useQuery<ITvShows>(
     ['tvShows', currentPage, tvShowsFilters],
     () =>
       getTvShows(
@@ -29,13 +25,6 @@ export default function TvShowsSection() {
         tvShowsFilters.year
       )
   );
-
-  if (error) {
-    let message = 'Unknown Error';
-    if (error instanceof Error) message = error.message;
-    console.log(status);
-    console.log(message);
-  }
 
   return (
     <div className="bg-smoke w-full mx-auto mt-20">
@@ -49,6 +38,7 @@ export default function TvShowsSection() {
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
       />
+
       {status == 'loading' && <Loading />}
       {data?.results.length === 0 && <NoResults />}
       <TvShowsGrid data={data} />

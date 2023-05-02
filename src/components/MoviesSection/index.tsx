@@ -16,7 +16,7 @@ export default function MoviesSection() {
     genre: '',
     year: '',
   });
-  const { data, status, error } = useQuery<IMovies>(
+  const { data, status } = useQuery<IMovies>(
     ['movies', currentPage, movieFilters],
     () =>
       getMovies(
@@ -28,12 +28,6 @@ export default function MoviesSection() {
       )
   );
   console.log(status);
-  if (error) {
-    let message = 'Unknown Error';
-    if (error instanceof Error) message = error.message;
-    console.log(status);
-    console.log(message);
-  }
 
   return (
     <div className="bg-smoke w-full mx-auto">
