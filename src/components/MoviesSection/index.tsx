@@ -27,7 +27,6 @@ export default function MoviesSection() {
         movieFilters.year
       )
   );
-  console.log(status);
 
   return (
     <div className="bg-smoke w-full mx-auto">
