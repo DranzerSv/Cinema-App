@@ -29,7 +29,10 @@ export default function MoviesSection() {
   );
 
   return (
-    <div className="bg-smoke w-full mx-auto">
+    <div className="w-full mx-auto flex flex-col mt-10">
+      <p className="text-fire text-5xl font-oswald m-auto" id="movies">
+        Movies Section
+      </p>
       <MoviesFilters
         setPage={setCurrentPage}
         setMoviesFilters={setMovieFilters}

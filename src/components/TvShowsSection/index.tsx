@@ -27,7 +27,11 @@ export default function TvShowsSection() {
   );
 
   return (
-    <div className="bg-smoke w-full mx-auto mt-20">
+    <div className="bg-smoke w-full mx-auto mt-20 flex flex-col">
+      <p className="text-fire text-5xl font-oswald m-auto" id="tvShows">
+        Tv Shows Section
+      </p>
+
       <TvShowsFilters
         setPage={setCurrentPage}
         setTvShowsFilters={setTvShowsFilters}
