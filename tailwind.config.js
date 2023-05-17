@@ -3,6 +3,9 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
+      minHeight: {
+        600: '600px',
+      },
       fontFamily: {
         oswald: ['Oswald', 'sans-serif'],
         lato: ['Lato', 'sans-serif'],
