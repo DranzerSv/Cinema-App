@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import cardDefault from '@/assets/cardDefault.png';
-import { VscTrash } from 'react-icons/vsc';
 import DeleteIcon from '../DeleteIcon';
 import { useState } from 'react';
 
