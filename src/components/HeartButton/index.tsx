@@ -33,7 +33,7 @@ function HeartButton({ id, type }: IHeartProps) {
           Add to favorites
         </button>
       ) : (
-        <Link href="/login">
+        <Link href="/favorites">
           <p className="bg-steel text-white p-2 w-32 hover:bg-gray-400 ">
             Log in to add to favorites
           </p>
